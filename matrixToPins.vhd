@@ -18,7 +18,7 @@ ARCHITECTURE arch OF matrixToPins IS
     SIGNAL COUNTER : INTEGER;
     --Creating the Tic Tac Toe grid w/ a 2D array (0-63 are the row/cols) and 2 to 0 are the RGB bits
     type matrix_type is array (0 to 63) of std_logic_vector(2 down 0);
-    constant matrix : matrix_type := (
+    constant gameReset : matrix_type := (
         ("111"),("111"),("111"),("111"),("111"),("111"),("111"),("000"), 
         ("111"),("000"),("111"),("000"),("111"),("000"),("111"),("000"), 
         ("111"),("111"),("111"),("111"),("111"),("111"),("111"),("000"), 
