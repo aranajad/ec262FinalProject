@@ -30,32 +30,35 @@ ARCHITECTURE arch OF matrixToPins IS
     SIGNAL col1out, col2out, col3out, col4out, col5out, col6out, col7out, col8out : std_logic_vector(2 down to 0)
 
     --Two layers of MUXs where the left most is the columns and right most is the rows
+    --for element 000111 of LED array that is the element at row 000 col 111
     mux_Col1 : mux_N
-    PORT MAP (sel=>ledCount(2 to 0), A => 000000, B=> 000001, C => 000010, D => 000011, E => 000100, F => 000101, G => 000110, H => 000111, I => col0Out);
+    PORT MAP (sel=>ledCount(2 to 0), A => ledArray(000000), B=> ledArray(000001), C => ledArray(000010), D => ledArray(000011), E => ledArray(000100), F => ledArray(000101), G => ledArray(000110), H => ledArray(000111), I => col0Out);
 
     mux_Col2 : mux_N
-    PORT MAP (sel=>ledCount(2 to 0), A => 001000, B=> 001001, C => 001010, D => 001011, E => 001100, F => 001101, G => 001110, H => 001111, I => col1Out);
+    PORT MAP (sel=>ledCount(2 to 0), A => ledArray(001000), B=> ledArray(001001), C => ledArray(001010), D => ledArray(001011), E => ledArray(001100), F => ledArray(001101), G => ledArray(001110), H => ledArray(001111), I => col1Out);
 
     mux_Col3 : mux_N
-    PORT MAP (sel=>ledCount(2 to 0), A => 010000, B=> 010001, C => 010010, D => 010011, E => 010100, F => 010101, G => 010110, H => 010111, I => col2Out);
+    PORT MAP (sel=>ledCount(2 to 0), A => ledArray(010000), B=> ledArray(010001), C => ledArray(010010), D => ledArray(010011), E => ledArray(010100), F => ledArray(010101), G => ledArray(010110), H => ledArray(010111), I => col2Out);
 
     mux_Col4 : mux_N
-    PORT MAP (sel=>ledCount(2 to 0), A => 011000, B=> 011001, C => 011010, D => 011011, E => 011100, F => 011101, G => 011110, H => 011111, I => col3Out);
+    PORT MAP (sel=>ledCount(2 to 0), A => ledArray(011000), B=> ledArray(011001), C => ledArray(011010), D => ledArray(011011), E => ledArray(011100), F => ledArray(011101), G => ledArray(011110), H => ledArray(011111), I => col3Out);
 
     mux_Col5 : mux_N
-    PORT MAP (sel=>ledCount(2 to 0), A => 100000, B=> 100001, C => 100010, D => 100011, E => 100100, F => 100101, G => 100110, H => 100111, I => col4Out);
+    PORT MAP (sel=>ledCount(2 to 0), A => ledArray(100000), B=> ledArray(100001), C => ledArray(100010), D => ledArray(100011), E => ledArray(100100), F => ledArray(100101), G => ledArray(100110), H => ledArray(100111), I => col4Out);
 
     mux_Col6 : mux_N
-    PORT MAP (sel=>ledCount(2 to 0), A => 101000, B=> 101001, C => 101010, D => 101011, E => 101100, F => 101101, G => 101110, H => 101111, I => col5Out);
+    PORT MAP (sel=>ledCount(2 to 0), A => ledArray(101000), B=> ledArray(101001), C => ledArray(101010), D => ledArray(101011), E => ledArray(101100), F => ledArray(101101), G => ledArray(101110), H => ledArray(101111), I => col5Out);
 
     mux_Col7 : mux_N
-    PORT MAP (sel=>ledCount(2 to 0), A => 110000, B=> 110001, C => 110010, D => 110011, E => 110100, F => 110101, G => 110110, H => 110111, I => col6Out);
+    PORT MAP (sel=>ledCount(2 to 0), A => ledArray(110000), B=> ledArray(110001), C => ledArray(110010), D => ledArray(110011), E => ledArray(110100), F => ledArray(110101), G => ledArray(110110), H => ledArray(110111), I => col6Out);
 
     mux_Col8 : mux_N
-    PORT MAP (sel=>ledCount(2 to 0), A => 111000, B=> 111001, C => 111010, D => 111011, E => 111100, F => 111101, G => 111110, H => 111111, I => col7Out);
+    PORT MAP (sel=>ledCount(2 to 0), A => ledArray(111000), B=> ledArray(111001), C => ledArray(111010), D => ledArray(111011), E => ledArray(111100), F => ledArray(111101), G => ledArray(111110), H => ledArray(111111), I => col7Out);
 
+    --We have filtered out which column is currently being looked at, now we need to find what row it is on by looking at the 3 MSB of the ledCounter
     mux_rows : mux_N
     PORT MAP (sel=>ledCount(5 to 3), A => col0Out, B=> col1Out, C => col2Out, D => col3Out, E => col4Out, F => col5Out, G => col6Out, H => col7Out, I => selLED);
+
     -- internal signals
     SIGNAL COUNTER : INTEGER;
     --Creating the Tic Tac Toe grid w/ a 2D array (0-63 are the row/cols) and 2 to 0 are the RGB bits
