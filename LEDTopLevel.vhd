@@ -3,7 +3,7 @@ library IEEE;
 use IEEE.std_logic_1164.all
 
 --Entity Declaration
-entity LED is
+entity LEDTopLevel is
     port(
         --  ports
         ledCount : IN std_logIC_VECTOR(5 downto 0); --6 bit counter where 3 LSB are the col count and 3 MSB are the row count
@@ -14,9 +14,8 @@ entity LED is
         
 
         );
-end entity;
 
-ARCHITECTURE arch OF LED IS
+ARCHITECTURE arch OF LEDTopLevel IS
 
     COMPONENT eightToOneMUX IS
         GENERIC( N	:	INTEGER := 3);   
