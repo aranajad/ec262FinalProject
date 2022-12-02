@@ -6,12 +6,11 @@ use IEEE.std_logic_1164.all
 entity matrixToPins is
     port(
         --  ports
-        in1, in2,: IN std_logic; --ignore (currently serves no use)
         ledCount : IN std_logIC_VECTOR(5 downto 0); --6 bit counter where 3 LSB are the col count and 3 MSB are the row count
         ledArray : IN matrix_type;
 
         -- Output ports
-        selRGB : OUT std_logic_vector(2 downto 0);
+        selLED : OUT std_logic_vector(2 downto 0);
         
 
         );
@@ -19,7 +18,7 @@ entity matrixToPins is
 ARCHITECTURE arch OF matrixToPins IS
 
     COMPONENT eightToOneMUX IS
-        GENERIC( N	:	INTEGER := 4);   
+        GENERIC( N	:	INTEGER := 3);   
         PORT( 
             sel	:	IN 	STD_LOGIC_VECTOR(N-1 DOWNTO 0);
             A, B, C, D, E, F, G, H	:	IN 	STD_LOGIC_VECTOR( N-1 DOWNTO 0 );
@@ -61,6 +60,7 @@ ARCHITECTURE arch OF matrixToPins IS
 
     -- internal signals
     SIGNAL COUNTER : INTEGER;
+    
     --Creating the Tic Tac Toe grid w/ a 2D array (0-63 are the row/cols) and 2 to 0 are the RGB bits
     type matrix_type is array (0 to 63) of std_logic_vector(2 downto 0);
     constant gameReset : matrix_type := (
