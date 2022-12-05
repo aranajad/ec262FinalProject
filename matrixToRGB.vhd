@@ -59,15 +59,3 @@ ARCHITECTURE arch OF LED IS
     --We have filtered out which column is currently being looked at, now we need to find what row it is on by looking at the 3 MSB of the ledCounter
     mux_rows : mux_N
     PORT MAP (sel=>ledCount(5 to 3), A => col0Out, B=> col1Out, C => col2Out, D => col3Out, E => col4Out, F => col5Out, G => col6Out, H => col7Out, I => selLED);
-
-    --Creating the Tic Tac Toe grid w/ a 2D array (0-63 are the row/cols) and 2 to 0 are the RGB bits
-    constant gameReset : matrix_type := (
-        ("111"),("111"),("111"),("111"),("111"),("111"),("111"),("000"), 
-        ("111"),("000"),("111"),("000"),("111"),("000"),("111"),("000"), 
-        ("111"),("111"),("111"),("111"),("111"),("111"),("111"),("000"), 
-        ("111"),("000"),("111"),("000"),("111"),("000"),("111"),("000"), 
-        ("111"),("111"),("111"),("111"),("111"),("111"),("111"),("000"), 
-        ("111"),("000"),("111"),("000"),("111"),("000"),("111"),("000"), 
-        ("111"),("111"),("111"),("111"),("111"),("111"),("111"),("000"), 
-        ("000"),("000"),("000"),("000"),("000"),("000"),("000"),("000"), 
-    )
