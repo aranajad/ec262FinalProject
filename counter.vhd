@@ -28,6 +28,7 @@ begin
         END IF;
     END PROCESS;
 
+    --Convert the int to the 6 bit output
     with COUNTER select
     counterOut <= "000000" WHEN 0,
                   "000001" WHEN 1,
