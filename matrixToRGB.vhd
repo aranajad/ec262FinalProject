@@ -56,6 +56,6 @@ ARCHITECTURE arch OF LED IS
     mux_Col8 : mux_N -- 111000 to 111111
     PORT MAP (sel=>ledCount(2 to 0), A => ledArray(56), B=> ledArray(57), C => ledArray(58), D => ledArray(59), E => ledArray(60), F => ledArray(61), G => ledArray(62), H => ledArray(63), I => col7Out);
 
-    --We have filtered out which column is currently being looked at, now we need to find what row it is on by looking at the 3 MSB of the ledCounter
+    --We have filtered out which col is currently being looked at, now we need to find what row it is on by looking at the 3 MSB of the ledCounter
     mux_rows : mux_N
     PORT MAP (sel=>ledCount(5 to 3), A => col0Out, B=> col1Out, C => col2Out, D => col3Out, E => col4Out, F => col5Out, G => col6Out, H => col7Out, I => selLED);
