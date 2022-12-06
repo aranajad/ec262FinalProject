@@ -36,11 +36,11 @@ Begin
 					  (((A = "0010") or (B = "0010") or (C = "0010") or (D = "0010") or (E = "0010")) and 
 					  ((A = "0101") or (B = "0101") or (C = "0101") or (D = "0101") or (E = "0101")) and 
 					  ((A = "1000") or (B = "1000") or (C = "1000") or (D = "1000") or (E = "1000"))) or
-					  --Top Right to Bot Left
+					  --Top Left to Bot Right
 					  (((A = "0000") or (B = "0000") or (C = "0000") or (D = "0000") or (E = "0000")) and 
 					  ((A = "0100") or (B = "0100") or (C = "0100") or (D = "0100") or (E = "0100")) and 
 					  ((A = "1000") or (B = "1000") or (C = "1000") or (D = "1000") or (E = "1000"))) or
-					  --Top Left to Bot Right
+					  --Top Right to Bot Left
 					  (((A = "0010") or (B = "0010") or (C = "0010") or (D = "0010") or (E = "0010")) and 
 					  ((A = "0100") or (B = "0100") or (C = "0100") or (D = "0100") or (E = "0100")) and 
 					  ((A = "0110") or (B = "0110") or (C = "0110") or (D = "0110") or (E = "0110")))) ELSE

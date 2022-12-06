@@ -1,0 +1,24 @@
+-- N-bit multiplexler 
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+
+ENTITY mux_N IS
+	GENERIC( N	:	INTEGER := 4);   
+	PORT( 
+		sel	:	IN 	STD_LOGIC;
+		A, B	:	IN 	STD_LOGIC_VECTOR( N-1 DOWNTO 0 );
+		C		:	OUT 	STD_LOGIC_VECTOR( N-1 DOWNTO 0 )
+	);
+END ENTITY;
+
+ARCHITECTURE arch OF mux_N IS
+BEGIN
+	PROCESS (sel, A, B)
+	BEGIN
+		IF (SEL = '0') THEN
+			C <= A;
+		ELSE
+			C <= B;
+		END IF;
+	END PROCESS;
+END arch; 
