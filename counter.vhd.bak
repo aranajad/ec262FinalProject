@@ -10,7 +10,7 @@ ENTITY counter IS
 
 END ENTITY;
 
-architecture arch of counter is
+architecture rtl of counter is
 
     signal COUNTER : INTEGER;
 
@@ -93,5 +93,7 @@ begin
                   "111000" WHEN 60,
                   "111001" WHEN 61,
                   "111010" WHEN 62,
-                  "111111" WHEN OTHERS;
-end arch;
+                  "111111" WHEN 63,
+
+
+end architecture;
