@@ -1,9 +1,8 @@
 --Library Declaration
 library IEEE;
-use IEEE.std_logic_1164.all;
+use IEEE.std_logic_1164.all
 
-library mylibrary;
-use mylibrary.mytypes.all;
+type matrix_type is array (0 to 63) of std_logic_vector(2 downto 0);
 
 --Entity Declaration
 entity Register_64 is
@@ -11,7 +10,7 @@ entity Register_64 is
         clrN, clock, load : in std_logic;
         --The array
         ledArray : in matrix_type;
-        ledOut : out matrix_type
+        ledOut : out matrix_type;
     
     );
 end Register_64;
@@ -32,7 +31,7 @@ begin
         reg_i: reg_N
             port map
             (
-                clrN=>clrN, clock=>clock, load =>load, D=>ledArray(i), Q=>ledOut(i)
+                clrN=>clrN, clock=>clock, load =>load, ledArray(i)=>D, ledOut(i)=>Q
             );
     end generate;
 

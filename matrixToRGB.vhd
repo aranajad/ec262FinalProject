@@ -1,8 +1,9 @@
 --Library Declaration
 library IEEE;
 use IEEE.std_logic_1164.all;
-library work;
-use work.common.all;
+
+library mylibrary;
+use mylibrary.mytypes.all;
 
 entity matrixToRGB is
     port(
