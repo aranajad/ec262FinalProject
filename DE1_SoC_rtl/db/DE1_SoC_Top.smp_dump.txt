@@ -1,0 +1,11 @@
+
+State Machine - |de1_soc_top|Top_level:TicTacToe|GameLog:Gamestate|pr_state
+Name pr_state.P2Del pr_state.P1Del pr_state.Endgame pr_state.P2Moves pr_state.P2Load pr_state.P1Moves pr_state.P1Load pr_state.BoardRes 
+pr_state.BoardRes 0 0 0 0 0 0 0 0 
+pr_state.P1Load 0 0 0 0 0 0 1 1 
+pr_state.P1Moves 0 0 0 0 0 1 0 1 
+pr_state.P2Load 0 0 0 0 1 0 0 1 
+pr_state.P2Moves 0 0 0 1 0 0 0 1 
+pr_state.Endgame 0 0 1 0 0 0 0 1 
+pr_state.P1Del 0 1 0 0 0 0 0 1 
+pr_state.P2Del 1 0 0 0 0 0 0 1 

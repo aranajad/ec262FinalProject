@@ -1,0 +1,1156 @@
+Analysis & Synthesis report for DE1_SoC_Top
+Thu Dec 08 13:28:35 2022
+Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |de1_soc_top|Top_level:TicTacToe|GameLog:Gamestate|pr_state
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: Top_level:TicTacToe|glitch_filter:Fil1
+ 14. Parameter Settings for User Entity Instance: Top_level:TicTacToe|glitch_filter:Fil2
+ 15. Parameter Settings for User Entity Instance: Top_level:TicTacToe|glitch_filter:Fil3
+ 16. Parameter Settings for User Entity Instance: Top_level:TicTacToe|glitch_filter:Fil4
+ 17. Parameter Settings for User Entity Instance: Top_level:TicTacToe|glitch_filter:Fil5
+ 18. Parameter Settings for User Entity Instance: Top_level:TicTacToe|glitch_filter:Fil6
+ 19. Parameter Settings for User Entity Instance: Top_level:TicTacToe|glitch_filter:Fil7
+ 20. Parameter Settings for User Entity Instance: Top_level:TicTacToe|glitch_filter:Fil8
+ 21. Parameter Settings for User Entity Instance: Top_level:TicTacToe|glitch_filter:Fil9
+ 22. Parameter Settings for User Entity Instance: Top_level:TicTacToe|GameLog:Gamestate
+ 23. Parameter Settings for User Entity Instance: Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move1
+ 24. Parameter Settings for User Entity Instance: Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move2
+ 25. Parameter Settings for User Entity Instance: Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move3
+ 26. Parameter Settings for User Entity Instance: Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move4
+ 27. Parameter Settings for User Entity Instance: Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move5
+ 28. Parameter Settings for User Entity Instance: Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move6
+ 29. Parameter Settings for User Entity Instance: Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move7
+ 30. Parameter Settings for User Entity Instance: Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move8
+ 31. Parameter Settings for User Entity Instance: Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move9
+ 32. Port Connectivity Checks: "Top_level:TicTacToe|selReg:Pos1|demux_1:Demux"
+ 33. Post-Synthesis Netlist Statistics for Top Partition
+ 34. Elapsed Time Per Partition
+ 35. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2020  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Thu Dec 08 13:28:35 2022       ;
+; Quartus Prime Version           ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
+; Revision Name                   ; DE1_SoC_Top                                 ;
+; Top-level Entity Name           ; de1_soc_top                                 ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 259                                         ;
+; Total pins                      ; 240                                         ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; de1_soc_top        ; DE1_SoC_Top        ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 16          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 16          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-16        ;   0.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                               ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                        ; Library ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------------------+---------+
+; reg_NHigh.vhd                    ; yes             ; User VHDL File  ; C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/reg_NHigh.vhd     ;         ;
+; bcd2ssd.vhd                      ; yes             ; User VHDL File  ; C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/bcd2ssd.vhd       ;         ;
+; Top_Level.vhd                    ; yes             ; User VHDL File  ; C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/Top_Level.vhd     ;         ;
+; selReg.vhd                       ; yes             ; User VHDL File  ; C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/selReg.vhd        ;         ;
+; oneBitReg.vhd                    ; yes             ; User VHDL File  ; C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/oneBitReg.vhd     ;         ;
+; one2Nine.vhd                     ; yes             ; User VHDL File  ; C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/one2Nine.vhd      ;         ;
+; moveReg.vhd                      ; yes             ; User VHDL File  ; C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/moveReg.vhd       ;         ;
+; GameLog.vhd                      ; yes             ; User VHDL File  ; C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/GameLog.vhd       ;         ;
+; demux_1.vhd                      ; yes             ; User VHDL File  ; C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/demux_1.vhd       ;         ;
+; checkWin2.vhd                    ; yes             ; User VHDL File  ; C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/checkWin2.vhd     ;         ;
+; checkWin1.vhd                    ; yes             ; User VHDL File  ; C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/checkWin1.vhd     ;         ;
+; de1_soc_top.vhd                  ; yes             ; User VHDL File  ; C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd   ;         ;
+; glitch_filter.vhd                ; yes             ; User VHDL File  ; C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/glitch_filter.vhd ;         ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------------------+---------+
+
+
++--------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                  ;
++---------------------------------------------+----------------+
+; Resource                                    ; Usage          ;
++---------------------------------------------+----------------+
+; Estimate of Logic utilization (ALMs needed) ; 321            ;
+;                                             ;                ;
+; Combinational ALUT usage for logic          ; 563            ;
+;     -- 7 input functions                    ; 0              ;
+;     -- 6 input functions                    ; 74             ;
+;     -- 5 input functions                    ; 42             ;
+;     -- 4 input functions                    ; 124            ;
+;     -- <=3 input functions                  ; 323            ;
+;                                             ;                ;
+; Dedicated logic registers                   ; 259            ;
+;                                             ;                ;
+; I/O pins                                    ; 240            ;
+;                                             ;                ;
+; Total DSP Blocks                            ; 0              ;
+;                                             ;                ;
+; Maximum fan-out node                        ; CLOCK_50~input ;
+; Maximum fan-out                             ; 259            ;
+; Total fan-out                               ; 3163           ;
+; Average fan-out                             ; 2.26           ;
++---------------------------------------------+----------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                       ;
++--------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------+---------------+--------------+
+; Compilation Hierarchy Node     ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                              ; Entity Name   ; Library Name ;
++--------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------+---------------+--------------+
+; |de1_soc_top                   ; 563 (0)             ; 259 (0)                   ; 0                 ; 0          ; 240  ; 0            ; |de1_soc_top                                                     ; de1_soc_top   ; work         ;
+;    |Top_level:TicTacToe|       ; 563 (9)             ; 259 (0)                   ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe                                 ; Top_level     ; work         ;
+;       |GameLog:Gamestate|      ; 53 (53)             ; 39 (39)                   ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|GameLog:Gamestate               ; GameLog       ; work         ;
+;       |bcd2ssd:Disp1|          ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|bcd2ssd:Disp1                   ; bcd2ssd       ; work         ;
+;       |bcd2ssd:Disp2|          ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|bcd2ssd:Disp2                   ; bcd2ssd       ; work         ;
+;       |checkWin1:Win1|         ; 54 (54)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|checkWin1:Win1                  ; checkWin1     ; work         ;
+;       |checkWin2:Win2|         ; 43 (43)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|checkWin2:Win2                  ; checkWin2     ; work         ;
+;       |glitch_filter:Fil1|     ; 73 (73)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|glitch_filter:Fil1              ; glitch_filter ; work         ;
+;       |glitch_filter:Fil2|     ; 73 (73)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|glitch_filter:Fil2              ; glitch_filter ; work         ;
+;       |glitch_filter:Fil3|     ; 73 (73)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|glitch_filter:Fil3              ; glitch_filter ; work         ;
+;       |glitch_filter:Fil4|     ; 73 (73)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|glitch_filter:Fil4              ; glitch_filter ; work         ;
+;       |glitch_filter:Fil9|     ; 73 (73)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|glitch_filter:Fil9              ; glitch_filter ; work         ;
+;       |moveReg:MovMem|         ; 0 (0)               ; 36 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|moveReg:MovMem                  ; moveReg       ; work         ;
+;          |reg_NHigh:Move1|     ; 0 (0)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move1  ; reg_NHigh     ; work         ;
+;          |reg_NHigh:Move2|     ; 0 (0)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move2  ; reg_NHigh     ; work         ;
+;          |reg_NHigh:Move3|     ; 0 (0)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move3  ; reg_NHigh     ; work         ;
+;          |reg_NHigh:Move4|     ; 0 (0)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move4  ; reg_NHigh     ; work         ;
+;          |reg_NHigh:Move5|     ; 0 (0)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move5  ; reg_NHigh     ; work         ;
+;          |reg_NHigh:Move6|     ; 0 (0)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move6  ; reg_NHigh     ; work         ;
+;          |reg_NHigh:Move7|     ; 0 (0)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move7  ; reg_NHigh     ; work         ;
+;          |reg_NHigh:Move8|     ; 0 (0)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move8  ; reg_NHigh     ; work         ;
+;          |reg_NHigh:Move9|     ; 0 (0)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move9  ; reg_NHigh     ; work         ;
+;       |one2Nine:GridSelect|    ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|one2Nine:GridSelect             ; one2Nine      ; work         ;
+;       |oneBitReg:GameWon|      ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|oneBitReg:GameWon               ; oneBitReg     ; work         ;
+;       |selReg:Pos1|            ; 2 (0)               ; 2 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos1                     ; selReg        ; work         ;
+;          |oneBitReg:Green_Reg| ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos1|oneBitReg:Green_Reg ; oneBitReg     ; work         ;
+;          |oneBitReg:Red_Reg|   ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos1|oneBitReg:Red_Reg   ; oneBitReg     ; work         ;
+;       |selReg:Pos2|            ; 3 (0)               ; 2 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos2                     ; selReg        ; work         ;
+;          |demux_1:Demux|       ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos2|demux_1:Demux       ; demux_1       ; work         ;
+;          |oneBitReg:Green_Reg| ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos2|oneBitReg:Green_Reg ; oneBitReg     ; work         ;
+;          |oneBitReg:Red_Reg|   ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos2|oneBitReg:Red_Reg   ; oneBitReg     ; work         ;
+;       |selReg:Pos3|            ; 2 (0)               ; 2 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos3                     ; selReg        ; work         ;
+;          |oneBitReg:Green_Reg| ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos3|oneBitReg:Green_Reg ; oneBitReg     ; work         ;
+;          |oneBitReg:Red_Reg|   ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos3|oneBitReg:Red_Reg   ; oneBitReg     ; work         ;
+;       |selReg:Pos4|            ; 3 (0)               ; 2 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos4                     ; selReg        ; work         ;
+;          |demux_1:Demux|       ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos4|demux_1:Demux       ; demux_1       ; work         ;
+;          |oneBitReg:Green_Reg| ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos4|oneBitReg:Green_Reg ; oneBitReg     ; work         ;
+;          |oneBitReg:Red_Reg|   ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos4|oneBitReg:Red_Reg   ; oneBitReg     ; work         ;
+;       |selReg:Pos5|            ; 2 (0)               ; 2 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos5                     ; selReg        ; work         ;
+;          |oneBitReg:Green_Reg| ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos5|oneBitReg:Green_Reg ; oneBitReg     ; work         ;
+;          |oneBitReg:Red_Reg|   ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos5|oneBitReg:Red_Reg   ; oneBitReg     ; work         ;
+;       |selReg:Pos6|            ; 3 (0)               ; 2 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos6                     ; selReg        ; work         ;
+;          |demux_1:Demux|       ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos6|demux_1:Demux       ; demux_1       ; work         ;
+;          |oneBitReg:Green_Reg| ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos6|oneBitReg:Green_Reg ; oneBitReg     ; work         ;
+;          |oneBitReg:Red_Reg|   ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos6|oneBitReg:Red_Reg   ; oneBitReg     ; work         ;
+;       |selReg:Pos7|            ; 2 (0)               ; 2 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos7                     ; selReg        ; work         ;
+;          |oneBitReg:Green_Reg| ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos7|oneBitReg:Green_Reg ; oneBitReg     ; work         ;
+;          |oneBitReg:Red_Reg|   ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos7|oneBitReg:Red_Reg   ; oneBitReg     ; work         ;
+;       |selReg:Pos8|            ; 3 (0)               ; 2 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos8                     ; selReg        ; work         ;
+;          |demux_1:Demux|       ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos8|demux_1:Demux       ; demux_1       ; work         ;
+;          |oneBitReg:Green_Reg| ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos8|oneBitReg:Green_Reg ; oneBitReg     ; work         ;
+;          |oneBitReg:Red_Reg|   ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos8|oneBitReg:Red_Reg   ; oneBitReg     ; work         ;
+;       |selReg:Pos9|            ; 3 (0)               ; 2 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos9                     ; selReg        ; work         ;
+;          |demux_1:Demux|       ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos9|demux_1:Demux       ; demux_1       ; work         ;
+;          |oneBitReg:Green_Reg| ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos9|oneBitReg:Green_Reg ; oneBitReg     ; work         ;
+;          |oneBitReg:Red_Reg|   ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |de1_soc_top|Top_level:TicTacToe|selReg:Pos9|oneBitReg:Red_Reg   ; oneBitReg     ; work         ;
++--------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------+---------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |de1_soc_top|Top_level:TicTacToe|GameLog:Gamestate|pr_state                                                                                          ;
++-------------------+----------------+----------------+------------------+------------------+-----------------+------------------+-----------------+-------------------+
+; Name              ; pr_state.P2Del ; pr_state.P1Del ; pr_state.Endgame ; pr_state.P2Moves ; pr_state.P2Load ; pr_state.P1Moves ; pr_state.P1Load ; pr_state.BoardRes ;
++-------------------+----------------+----------------+------------------+------------------+-----------------+------------------+-----------------+-------------------+
+; pr_state.BoardRes ; 0              ; 0              ; 0                ; 0                ; 0               ; 0                ; 0               ; 0                 ;
+; pr_state.P1Load   ; 0              ; 0              ; 0                ; 0                ; 0               ; 0                ; 1               ; 1                 ;
+; pr_state.P1Moves  ; 0              ; 0              ; 0                ; 0                ; 0               ; 1                ; 0               ; 1                 ;
+; pr_state.P2Load   ; 0              ; 0              ; 0                ; 0                ; 1               ; 0                ; 0               ; 1                 ;
+; pr_state.P2Moves  ; 0              ; 0              ; 0                ; 1                ; 0               ; 0                ; 0               ; 1                 ;
+; pr_state.Endgame  ; 0              ; 0              ; 1                ; 0                ; 0               ; 0                ; 0               ; 1                 ;
+; pr_state.P1Del    ; 0              ; 1              ; 0                ; 0                ; 0               ; 0                ; 0               ; 1                 ;
+; pr_state.P2Del    ; 1              ; 0              ; 0                ; 0                ; 0               ; 0                ; 0               ; 1                 ;
++-------------------+----------------+----------------+------------------+------------------+-----------------+------------------+-----------------+-------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                                    ;
++--------------------------------------------------------+--------------------------------------------------------------+
+; Register name                                          ; Reason for Removal                                           ;
++--------------------------------------------------------+--------------------------------------------------------------+
+; Top_level:TicTacToe|glitch_filter:Fil5|y               ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|y         ;
+; Top_level:TicTacToe|glitch_filter:Fil6|y               ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|y         ;
+; Top_level:TicTacToe|glitch_filter:Fil7|y               ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|y         ;
+; Top_level:TicTacToe|glitch_filter:Fil8|y               ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|y         ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[31]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[31] ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[30]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[30] ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[29]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[29] ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[28]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[28] ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[27]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[27] ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[26]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[26] ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[25]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[25] ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[24]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[24] ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[23]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[23] ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[22]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[22] ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[21]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[21] ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[20]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[20] ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[19]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[19] ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[18]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[18] ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[17]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[17] ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[16]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[16] ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[15]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[15] ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[14]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[14] ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[13]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[13] ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[12]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[12] ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[11]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[11] ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[10]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[10] ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[9]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[9]  ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[8]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[8]  ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[7]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[7]  ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[6]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[6]  ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[5]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[5]  ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[4]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[4]  ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[3]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[3]  ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[2]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[2]  ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[1]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[1]  ;
+; Top_level:TicTacToe|glitch_filter:Fil5|count[0]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil1|count[0]  ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[31]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[31] ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[30]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[30] ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[29]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[29] ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[28]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[28] ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[27]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[27] ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[26]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[26] ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[25]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[25] ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[24]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[24] ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[23]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[23] ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[22]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[22] ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[21]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[21] ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[20]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[20] ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[19]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[19] ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[18]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[18] ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[17]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[17] ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[16]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[16] ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[15]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[15] ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[14]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[14] ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[13]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[13] ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[12]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[12] ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[11]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[11] ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[10]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[10] ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[9]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[9]  ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[8]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[8]  ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[7]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[7]  ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[6]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[6]  ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[5]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[5]  ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[4]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[4]  ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[3]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[3]  ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[2]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[2]  ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[1]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[1]  ;
+; Top_level:TicTacToe|glitch_filter:Fil6|count[0]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil2|count[0]  ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[31]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[31] ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[30]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[30] ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[29]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[29] ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[28]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[28] ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[27]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[27] ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[26]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[26] ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[25]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[25] ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[24]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[24] ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[23]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[23] ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[22]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[22] ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[21]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[21] ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[20]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[20] ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[19]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[19] ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[18]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[18] ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[17]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[17] ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[16]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[16] ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[15]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[15] ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[14]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[14] ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[13]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[13] ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[12]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[12] ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[11]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[11] ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[10]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[10] ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[9]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[9]  ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[8]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[8]  ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[7]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[7]  ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[6]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[6]  ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[5]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[5]  ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[4]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[4]  ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[3]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[3]  ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[2]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[2]  ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[1]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[1]  ;
+; Top_level:TicTacToe|glitch_filter:Fil7|count[0]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil3|count[0]  ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[31]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[31] ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[30]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[30] ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[29]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[29] ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[28]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[28] ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[27]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[27] ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[26]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[26] ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[25]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[25] ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[24]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[24] ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[23]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[23] ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[22]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[22] ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[21]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[21] ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[20]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[20] ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[19]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[19] ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[18]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[18] ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[17]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[17] ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[16]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[16] ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[15]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[15] ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[14]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[14] ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[13]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[13] ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[12]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[12] ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[11]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[11] ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[10]       ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[10] ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[9]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[9]  ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[8]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[8]  ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[7]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[7]  ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[6]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[6]  ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[5]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[5]  ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[4]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[4]  ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[3]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[3]  ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[2]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[2]  ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[1]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[1]  ;
+; Top_level:TicTacToe|glitch_filter:Fil8|count[0]        ; Merged with Top_level:TicTacToe|glitch_filter:Fil4|count[0]  ;
+; Top_level:TicTacToe|GameLog:Gamestate|pr_state.Endgame ; Lost fanout                                                  ;
+; Total Number of Removed Registers = 133                ;                                                              ;
++--------------------------------------------------------+--------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 259   ;
+; Number of registers using Synchronous Clear  ; 185   ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 254   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 41    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------------------------------------------+
+; Inverted Register Statistics                                      ;
++---------------------------------------------------------+---------+
+; Inverted Register                                       ; Fan out ;
++---------------------------------------------------------+---------+
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move1|Q[0] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move1|Q[3] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move1|Q[2] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move1|Q[1] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move3|Q[0] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move3|Q[3] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move3|Q[2] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move3|Q[1] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move5|Q[0] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move5|Q[3] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move5|Q[2] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move5|Q[1] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move7|Q[0] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move7|Q[3] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move7|Q[2] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move7|Q[1] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move9|Q[0] ; 9       ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move9|Q[3] ; 9       ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move9|Q[2] ; 9       ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move9|Q[1] ; 9       ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move2|Q[2] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move2|Q[0] ; 8       ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move2|Q[3] ; 8       ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move2|Q[1] ; 8       ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move4|Q[0] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move4|Q[3] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move4|Q[2] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move4|Q[1] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move6|Q[0] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move6|Q[3] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move6|Q[2] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move6|Q[1] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move8|Q[0] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move8|Q[3] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move8|Q[2] ; 10      ;
+; Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move8|Q[1] ; 10      ;
+; Total number of inverted registers = 36                 ;         ;
++---------------------------------------------------------+---------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
+; 3:1                ; 30 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |de1_soc_top|Top_level:TicTacToe|glitch_filter:Fil9|count[14] ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |de1_soc_top|Top_level:TicTacToe|glitch_filter:Fil4|count[27] ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |de1_soc_top|Top_level:TicTacToe|glitch_filter:Fil1|count[26] ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |de1_soc_top|Top_level:TicTacToe|glitch_filter:Fil2|count[28] ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; Yes        ; |de1_soc_top|Top_level:TicTacToe|glitch_filter:Fil3|count[6]  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |de1_soc_top|Top_level:TicTacToe|glitch_filter:Fil9|count[0]  ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |de1_soc_top|Top_level:TicTacToe|glitch_filter:Fil4|count[31] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |de1_soc_top|Top_level:TicTacToe|glitch_filter:Fil1|count[31] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |de1_soc_top|Top_level:TicTacToe|glitch_filter:Fil2|count[31] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |de1_soc_top|Top_level:TicTacToe|glitch_filter:Fil3|count[0]  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top_level:TicTacToe|glitch_filter:Fil1 ;
++----------------+-------+------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                       ;
++----------------+-------+------------------------------------------------------------+
+; clock_cycles   ; 1000  ; Signed Integer                                             ;
+; logic_level    ; '1'   ; Enumerated                                                 ;
++----------------+-------+------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top_level:TicTacToe|glitch_filter:Fil2 ;
++----------------+-------+------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                       ;
++----------------+-------+------------------------------------------------------------+
+; clock_cycles   ; 1000  ; Signed Integer                                             ;
+; logic_level    ; '1'   ; Enumerated                                                 ;
++----------------+-------+------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top_level:TicTacToe|glitch_filter:Fil3 ;
++----------------+-------+------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                       ;
++----------------+-------+------------------------------------------------------------+
+; clock_cycles   ; 1000  ; Signed Integer                                             ;
+; logic_level    ; '1'   ; Enumerated                                                 ;
++----------------+-------+------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top_level:TicTacToe|glitch_filter:Fil4 ;
++----------------+-------+------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                       ;
++----------------+-------+------------------------------------------------------------+
+; clock_cycles   ; 1000  ; Signed Integer                                             ;
+; logic_level    ; '1'   ; Enumerated                                                 ;
++----------------+-------+------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top_level:TicTacToe|glitch_filter:Fil5 ;
++----------------+-------+------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                       ;
++----------------+-------+------------------------------------------------------------+
+; clock_cycles   ; 1000  ; Signed Integer                                             ;
+; logic_level    ; '1'   ; Enumerated                                                 ;
++----------------+-------+------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top_level:TicTacToe|glitch_filter:Fil6 ;
++----------------+-------+------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                       ;
++----------------+-------+------------------------------------------------------------+
+; clock_cycles   ; 1000  ; Signed Integer                                             ;
+; logic_level    ; '1'   ; Enumerated                                                 ;
++----------------+-------+------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top_level:TicTacToe|glitch_filter:Fil7 ;
++----------------+-------+------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                       ;
++----------------+-------+------------------------------------------------------------+
+; clock_cycles   ; 1000  ; Signed Integer                                             ;
+; logic_level    ; '1'   ; Enumerated                                                 ;
++----------------+-------+------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top_level:TicTacToe|glitch_filter:Fil8 ;
++----------------+-------+------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                       ;
++----------------+-------+------------------------------------------------------------+
+; clock_cycles   ; 1000  ; Signed Integer                                             ;
+; logic_level    ; '1'   ; Enumerated                                                 ;
++----------------+-------+------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top_level:TicTacToe|glitch_filter:Fil9 ;
++----------------+-------+------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                       ;
++----------------+-------+------------------------------------------------------------+
+; clock_cycles   ; 1000  ; Signed Integer                                             ;
+; logic_level    ; '1'   ; Enumerated                                                 ;
++----------------+-------+------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top_level:TicTacToe|GameLog:Gamestate ;
++----------------+----------+--------------------------------------------------------+
+; Parameter Name ; Value    ; Type                                                   ;
++----------------+----------+--------------------------------------------------------+
+; n              ; 60000000 ; Signed Integer                                         ;
++----------------+----------+--------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move1 ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; n              ; 4     ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move2 ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; n              ; 4     ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move3 ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; n              ; 4     ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move4 ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; n              ; 4     ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move5 ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; n              ; 4     ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move6 ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; n              ; 4     ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move7 ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; n              ; 4     ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move8 ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; n              ; 4     ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move9 ;
++----------------+-------+------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                   ;
++----------------+-------+------------------------------------------------------------------------+
+; n              ; 4     ; Signed Integer                                                         ;
++----------------+-------+------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "Top_level:TicTacToe|selReg:Pos1|demux_1:Demux"                                      ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; c[1] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 259                         ;
+;     CLR               ; 38                          ;
+;     CLR SCLR          ; 180                         ;
+;     ENA CLR           ; 36                          ;
+;     ENA SCLR          ; 5                           ;
+; arriav_io_obuf        ; 97                          ;
+; arriav_lcell_comb     ; 574                         ;
+;     arith             ; 192                         ;
+;         1 data inputs ; 192                         ;
+;     normal            ; 382                         ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 10                          ;
+;         2 data inputs ; 125                         ;
+;         3 data inputs ; 6                           ;
+;         4 data inputs ; 124                         ;
+;         5 data inputs ; 42                          ;
+;         6 data inputs ; 74                          ;
+; boundary_port         ; 240                         ;
+;                       ;                             ;
+; Max LUT depth         ; 6.00                        ;
+; Average LUT depth     ; 4.36                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
+    Info: Processing started: Thu Dec 08 13:28:19 2022
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE1_SoC_Top -c DE1_SoC_Top
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file reg_nhigh.vhd
+    Info (12022): Found design unit 1: reg_NHigh-arch File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/reg_NHigh.vhd Line: 14
+    Info (12023): Found entity 1: reg_NHigh File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/reg_NHigh.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file bcd2ssd.vhd
+    Info (12022): Found design unit 1: bcd2ssd-a File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/bcd2ssd.vhd Line: 19
+    Info (12023): Found entity 1: bcd2ssd File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/bcd2ssd.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file top_level.vhd
+    Info (12022): Found design unit 1: Top_level-arch File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/Top_Level.vhd Line: 15
+    Info (12023): Found entity 1: Top_level File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/Top_Level.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file selreg.vhd
+    Info (12022): Found design unit 1: selReg-arch File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/selReg.vhd Line: 13
+    Info (12023): Found entity 1: selReg File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/selReg.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file reg_n.vhd
+    Info (12022): Found design unit 1: reg_N-arch File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/reg_N.vhd Line: 14
+    Info (12023): Found entity 1: reg_N File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/reg_N.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file onebitreg.vhd
+    Info (12022): Found design unit 1: oneBitReg-arch File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/oneBitReg.vhd Line: 13
+    Info (12023): Found entity 1: oneBitReg File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/oneBitReg.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file one2nine.vhd
+    Info (12022): Found design unit 1: one2Nine-arch File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/one2Nine.vhd Line: 14
+    Info (12023): Found entity 1: one2Nine File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/one2Nine.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file movereg.vhd
+    Info (12022): Found design unit 1: moveReg-arch File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/moveReg.vhd Line: 13
+    Info (12023): Found entity 1: moveReg File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/moveReg.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file gamelog.vhd
+    Info (12022): Found design unit 1: GameLog-arch File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/GameLog.vhd Line: 17
+    Info (12023): Found entity 1: GameLog File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/GameLog.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file demux_1.vhd
+    Info (12022): Found design unit 1: demux_1-arch File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/demux_1.vhd Line: 13
+    Info (12023): Found entity 1: demux_1 File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/demux_1.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file checkwin2.vhd
+    Info (12022): Found design unit 1: checkWin2-arch File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/checkWin2.vhd Line: 12
+    Info (12023): Found entity 1: checkWin2 File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/checkWin2.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file checkwin1.vhd
+    Info (12022): Found design unit 1: checkWin1-arch File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/checkWin1.vhd Line: 12
+    Info (12023): Found entity 1: checkWin1 File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/checkWin1.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file de1_soc_top.vhd
+    Info (12022): Found design unit 1: de1_soc_top-rtl File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 99
+    Info (12023): Found entity 1: de1_soc_top File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 7
+Info (12021): Found 2 design units, including 1 entities, in source file glitch_filter.vhd
+    Info (12022): Found design unit 1: glitch_filter-a File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/glitch_filter.vhd Line: 19
+    Info (12023): Found entity 1: glitch_filter File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/glitch_filter.vhd Line: 6
+Info (12127): Elaborating entity "de1_soc_top" for the top level hierarchy
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(12): used implicit default value for signal "ADC_DIN" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 12
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(14): used implicit default value for signal "ADC_SCLK" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 14
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(20): used implicit default value for signal "AUD_DACDAT" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 20
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(22): used implicit default value for signal "AUD_XCK" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 22
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(31): used implicit default value for signal "DRAM_ADDR" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 31
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(32): used implicit default value for signal "DRAM_BA" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 32
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(33): used implicit default value for signal "DRAM_CAS_N" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 33
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(34): used implicit default value for signal "DRAM_CKE" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 34
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(35): used implicit default value for signal "DRAM_CLK" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 35
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(36): used implicit default value for signal "DRAM_CS_N" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 36
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(38): used implicit default value for signal "DRAM_LDQM" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 38
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(39): used implicit default value for signal "DRAM_RAS_N" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 39
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(40): used implicit default value for signal "DRAM_UDQM" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 40
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(41): used implicit default value for signal "DRAM_WE_N" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 41
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(44): used implicit default value for signal "FPGA_I2C_SCLK" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 44
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(49): used implicit default value for signal "HEX1" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 49
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(50): used implicit default value for signal "HEX2" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 50
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(52): used implicit default value for signal "HEX4" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 52
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(53): used implicit default value for signal "HEX5" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 53
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(57): used implicit default value for signal "IRDA_TXD" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 57
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(63): used implicit default value for signal "LEDR" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 63
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(78): used implicit default value for signal "TD_RESET_N" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 78
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(82): used implicit default value for signal "VGA_B" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 82
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(83): used implicit default value for signal "VGA_BLANK_N" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 83
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(84): used implicit default value for signal "VGA_CLK" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 84
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(85): used implicit default value for signal "VGA_G" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 85
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(86): used implicit default value for signal "VGA_HS" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 86
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(87): used implicit default value for signal "VGA_R" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 87
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(88): used implicit default value for signal "VGA_SYNC_N" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 88
+Warning (10541): VHDL Signal Declaration warning at de1_soc_top.vhd(89): used implicit default value for signal "VGA_VS" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 89
+Info (12128): Elaborating entity "Top_level" for hierarchy "Top_level:TicTacToe" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 114
+Info (12128): Elaborating entity "glitch_filter" for hierarchy "Top_level:TicTacToe|glitch_filter:Fil1" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/Top_Level.vhd Line: 111
+Warning (10492): VHDL Process Statement warning at glitch_filter.vhd(25): signal "clrn" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/glitch_filter.vhd Line: 25
+Info (12128): Elaborating entity "GameLog" for hierarchy "Top_level:TicTacToe|GameLog:Gamestate" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/Top_Level.vhd Line: 120
+Warning (10492): VHDL Process Statement warning at GameLog.vhd(41): signal "counter" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/GameLog.vhd Line: 41
+Warning (10492): VHDL Process Statement warning at GameLog.vhd(61): signal "counter" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/GameLog.vhd Line: 61
+Warning (10492): VHDL Process Statement warning at GameLog.vhd(73): signal "Reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/GameLog.vhd Line: 73
+Info (12128): Elaborating entity "one2Nine" for hierarchy "Top_level:TicTacToe|one2Nine:GridSelect" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/Top_Level.vhd Line: 121
+Info (12128): Elaborating entity "selReg" for hierarchy "Top_level:TicTacToe|selReg:Pos1" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/Top_Level.vhd Line: 122
+Info (12128): Elaborating entity "demux_1" for hierarchy "Top_level:TicTacToe|selReg:Pos1|demux_1:Demux" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/selReg.vhd Line: 34
+Info (12128): Elaborating entity "oneBitReg" for hierarchy "Top_level:TicTacToe|selReg:Pos1|oneBitReg:Red_Reg" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/selReg.vhd Line: 35
+Info (12128): Elaborating entity "moveReg" for hierarchy "Top_level:TicTacToe|moveReg:MovMem" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/Top_Level.vhd Line: 131
+Info (12128): Elaborating entity "reg_NHigh" for hierarchy "Top_level:TicTacToe|moveReg:MovMem|reg_NHigh:Move1" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/moveReg.vhd Line: 32
+Info (12128): Elaborating entity "checkWin1" for hierarchy "Top_level:TicTacToe|checkWin1:Win1" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/Top_Level.vhd Line: 132
+Info (12128): Elaborating entity "checkWin2" for hierarchy "Top_level:TicTacToe|checkWin2:Win2" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/Top_Level.vhd Line: 133
+Info (12128): Elaborating entity "bcd2ssd" for hierarchy "Top_level:TicTacToe|bcd2ssd:Disp1" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/Top_Level.vhd Line: 135
+Warning (13034): The following nodes have both tri-state and non-tri-state drivers
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[0]" and its non-tri-state driver. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[1]" and its non-tri-state driver. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[2]" and its non-tri-state driver. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[3]" and its non-tri-state driver. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[4]" and its non-tri-state driver. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[5]" and its non-tri-state driver. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[6]" and its non-tri-state driver. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[7]" and its non-tri-state driver. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[8]" and its non-tri-state driver. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[9]" and its non-tri-state driver. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[10]" and its non-tri-state driver. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[11]" and its non-tri-state driver. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[12]" and its non-tri-state driver. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[13]" and its non-tri-state driver. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[14]" and its non-tri-state driver. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[15]" and its non-tri-state driver. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[16]" and its non-tri-state driver. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[17]" and its non-tri-state driver. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13035): Inserted always-enabled tri-state buffer between "GPIO_0[35]" and its non-tri-state driver. File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+Warning (13039): The following bidirectional pins have no drivers
+    Warning (13040): bidirectional pin "ADC_CS_N" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 11
+    Warning (13040): bidirectional pin "AUD_ADCLRCK" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 18
+    Warning (13040): bidirectional pin "AUD_BCLK" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 19
+    Warning (13040): bidirectional pin "AUD_DACLRCK" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 21
+    Warning (13040): bidirectional pin "DRAM_DQ[0]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 37
+    Warning (13040): bidirectional pin "DRAM_DQ[1]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 37
+    Warning (13040): bidirectional pin "DRAM_DQ[2]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 37
+    Warning (13040): bidirectional pin "DRAM_DQ[3]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 37
+    Warning (13040): bidirectional pin "DRAM_DQ[4]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 37
+    Warning (13040): bidirectional pin "DRAM_DQ[5]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 37
+    Warning (13040): bidirectional pin "DRAM_DQ[6]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 37
+    Warning (13040): bidirectional pin "DRAM_DQ[7]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 37
+    Warning (13040): bidirectional pin "DRAM_DQ[8]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 37
+    Warning (13040): bidirectional pin "DRAM_DQ[9]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 37
+    Warning (13040): bidirectional pin "DRAM_DQ[10]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 37
+    Warning (13040): bidirectional pin "DRAM_DQ[11]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 37
+    Warning (13040): bidirectional pin "DRAM_DQ[12]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 37
+    Warning (13040): bidirectional pin "DRAM_DQ[13]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 37
+    Warning (13040): bidirectional pin "DRAM_DQ[14]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 37
+    Warning (13040): bidirectional pin "DRAM_DQ[15]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 37
+    Warning (13040): bidirectional pin "FPGA_I2C_SDAT" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 45
+    Warning (13040): bidirectional pin "PS2_CLK" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 66
+    Warning (13040): bidirectional pin "PS2_CLK2" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 67
+    Warning (13040): bidirectional pin "PS2_DAT" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 68
+    Warning (13040): bidirectional pin "PS2_DAT2" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 69
+    Warning (13040): bidirectional pin "GPIO_0[18]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13040): bidirectional pin "GPIO_0[19]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13040): bidirectional pin "GPIO_0[20]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13040): bidirectional pin "GPIO_0[21]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13040): bidirectional pin "GPIO_0[22]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13040): bidirectional pin "GPIO_0[23]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13040): bidirectional pin "GPIO_0[24]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13040): bidirectional pin "GPIO_0[25]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13040): bidirectional pin "GPIO_0[26]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13040): bidirectional pin "GPIO_0[27]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13040): bidirectional pin "GPIO_0[28]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13040): bidirectional pin "GPIO_0[29]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13040): bidirectional pin "GPIO_0[30]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13040): bidirectional pin "GPIO_0[31]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13040): bidirectional pin "GPIO_0[32]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13040): bidirectional pin "GPIO_0[33]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13040): bidirectional pin "GPIO_0[34]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13040): bidirectional pin "GPIO_1[0]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[1]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[2]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[3]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[4]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[5]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[6]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[7]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[8]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[9]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[10]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[11]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[12]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[13]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[14]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[15]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[16]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[17]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[18]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[19]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[20]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[21]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[22]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[23]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[24]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[25]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[26]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[27]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[28]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[29]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[30]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[31]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[32]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[33]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[34]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+    Warning (13040): bidirectional pin "GPIO_1[35]" has no driver File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 95
+Warning (13009): TRI or OPNDRN buffers permanently enabled
+    Warning (13010): Node "GPIO_0[0]~synth" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13010): Node "GPIO_0[1]~synth" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13010): Node "GPIO_0[2]~synth" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13010): Node "GPIO_0[3]~synth" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13010): Node "GPIO_0[4]~synth" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13010): Node "GPIO_0[5]~synth" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13010): Node "GPIO_0[6]~synth" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13010): Node "GPIO_0[7]~synth" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13010): Node "GPIO_0[8]~synth" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13010): Node "GPIO_0[9]~synth" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13010): Node "GPIO_0[10]~synth" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13010): Node "GPIO_0[11]~synth" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13010): Node "GPIO_0[12]~synth" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13010): Node "GPIO_0[13]~synth" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13010): Node "GPIO_0[14]~synth" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13010): Node "GPIO_0[15]~synth" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13010): Node "GPIO_0[16]~synth" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13010): Node "GPIO_0[17]~synth" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+    Warning (13010): Node "GPIO_0[35]~synth" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 92
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "ADC_DIN" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 12
+    Warning (13410): Pin "ADC_SCLK" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 14
+    Warning (13410): Pin "AUD_DACDAT" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 20
+    Warning (13410): Pin "AUD_XCK" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 22
+    Warning (13410): Pin "DRAM_ADDR[0]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 31
+    Warning (13410): Pin "DRAM_ADDR[1]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 31
+    Warning (13410): Pin "DRAM_ADDR[2]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 31
+    Warning (13410): Pin "DRAM_ADDR[3]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 31
+    Warning (13410): Pin "DRAM_ADDR[4]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 31
+    Warning (13410): Pin "DRAM_ADDR[5]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 31
+    Warning (13410): Pin "DRAM_ADDR[6]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 31
+    Warning (13410): Pin "DRAM_ADDR[7]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 31
+    Warning (13410): Pin "DRAM_ADDR[8]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 31
+    Warning (13410): Pin "DRAM_ADDR[9]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 31
+    Warning (13410): Pin "DRAM_ADDR[10]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 31
+    Warning (13410): Pin "DRAM_ADDR[11]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 31
+    Warning (13410): Pin "DRAM_ADDR[12]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 31
+    Warning (13410): Pin "DRAM_BA[0]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 32
+    Warning (13410): Pin "DRAM_BA[1]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 32
+    Warning (13410): Pin "DRAM_CAS_N" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 33
+    Warning (13410): Pin "DRAM_CKE" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 34
+    Warning (13410): Pin "DRAM_CLK" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 35
+    Warning (13410): Pin "DRAM_CS_N" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 36
+    Warning (13410): Pin "DRAM_LDQM" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 38
+    Warning (13410): Pin "DRAM_RAS_N" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 39
+    Warning (13410): Pin "DRAM_UDQM" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 40
+    Warning (13410): Pin "DRAM_WE_N" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 41
+    Warning (13410): Pin "FPGA_I2C_SCLK" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 44
+    Warning (13410): Pin "HEX1[0]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 49
+    Warning (13410): Pin "HEX1[1]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 49
+    Warning (13410): Pin "HEX1[2]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 49
+    Warning (13410): Pin "HEX1[3]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 49
+    Warning (13410): Pin "HEX1[4]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 49
+    Warning (13410): Pin "HEX1[5]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 49
+    Warning (13410): Pin "HEX1[6]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 49
+    Warning (13410): Pin "HEX2[0]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 50
+    Warning (13410): Pin "HEX2[1]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 50
+    Warning (13410): Pin "HEX2[2]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 50
+    Warning (13410): Pin "HEX2[3]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 50
+    Warning (13410): Pin "HEX2[4]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 50
+    Warning (13410): Pin "HEX2[5]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 50
+    Warning (13410): Pin "HEX2[6]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 50
+    Warning (13410): Pin "HEX4[0]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 52
+    Warning (13410): Pin "HEX4[1]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 52
+    Warning (13410): Pin "HEX4[2]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 52
+    Warning (13410): Pin "HEX4[3]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 52
+    Warning (13410): Pin "HEX4[4]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 52
+    Warning (13410): Pin "HEX4[5]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 52
+    Warning (13410): Pin "HEX4[6]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 52
+    Warning (13410): Pin "HEX5[0]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 53
+    Warning (13410): Pin "HEX5[1]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 53
+    Warning (13410): Pin "HEX5[2]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 53
+    Warning (13410): Pin "HEX5[3]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 53
+    Warning (13410): Pin "HEX5[4]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 53
+    Warning (13410): Pin "HEX5[5]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 53
+    Warning (13410): Pin "HEX5[6]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 53
+    Warning (13410): Pin "IRDA_TXD" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 57
+    Warning (13410): Pin "LEDR[0]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 63
+    Warning (13410): Pin "LEDR[1]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 63
+    Warning (13410): Pin "LEDR[2]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 63
+    Warning (13410): Pin "LEDR[3]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 63
+    Warning (13410): Pin "LEDR[4]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 63
+    Warning (13410): Pin "LEDR[5]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 63
+    Warning (13410): Pin "LEDR[6]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 63
+    Warning (13410): Pin "LEDR[7]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 63
+    Warning (13410): Pin "LEDR[8]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 63
+    Warning (13410): Pin "LEDR[9]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 63
+    Warning (13410): Pin "TD_RESET_N" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 78
+    Warning (13410): Pin "VGA_B[0]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 82
+    Warning (13410): Pin "VGA_B[1]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 82
+    Warning (13410): Pin "VGA_B[2]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 82
+    Warning (13410): Pin "VGA_B[3]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 82
+    Warning (13410): Pin "VGA_B[4]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 82
+    Warning (13410): Pin "VGA_B[5]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 82
+    Warning (13410): Pin "VGA_B[6]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 82
+    Warning (13410): Pin "VGA_B[7]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 82
+    Warning (13410): Pin "VGA_BLANK_N" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 83
+    Warning (13410): Pin "VGA_CLK" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 84
+    Warning (13410): Pin "VGA_G[0]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 85
+    Warning (13410): Pin "VGA_G[1]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 85
+    Warning (13410): Pin "VGA_G[2]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 85
+    Warning (13410): Pin "VGA_G[3]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 85
+    Warning (13410): Pin "VGA_G[4]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 85
+    Warning (13410): Pin "VGA_G[5]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 85
+    Warning (13410): Pin "VGA_G[6]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 85
+    Warning (13410): Pin "VGA_G[7]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 85
+    Warning (13410): Pin "VGA_HS" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 86
+    Warning (13410): Pin "VGA_R[0]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 87
+    Warning (13410): Pin "VGA_R[1]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 87
+    Warning (13410): Pin "VGA_R[2]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 87
+    Warning (13410): Pin "VGA_R[3]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 87
+    Warning (13410): Pin "VGA_R[4]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 87
+    Warning (13410): Pin "VGA_R[5]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 87
+    Warning (13410): Pin "VGA_R[6]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 87
+    Warning (13410): Pin "VGA_R[7]" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 87
+    Warning (13410): Pin "VGA_SYNC_N" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 88
+    Warning (13410): Pin "VGA_VS" is stuck at GND File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 89
+Info (286030): Timing-Driven Synthesis is running
+Critical Warning (18061): Ignored Power-Up Level option on the following registers
+    Critical Warning (18010): Register Top_level:TicTacToe|GameLog:Gamestate|counter[31] will power up to Low File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/GameLog.vhd Line: 92
+    Critical Warning (18010): Register Top_level:TicTacToe|GameLog:Gamestate|counter[0] will power up to Low File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/GameLog.vhd Line: 92
+    Critical Warning (18010): Register Top_level:TicTacToe|glitch_filter:Fil2|count[31] will power up to Low File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/glitch_filter.vhd Line: 25
+    Critical Warning (18010): Register Top_level:TicTacToe|glitch_filter:Fil2|count[0] will power up to Low File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/glitch_filter.vhd Line: 25
+    Critical Warning (18010): Register Top_level:TicTacToe|glitch_filter:Fil1|count[31] will power up to Low File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/glitch_filter.vhd Line: 25
+    Critical Warning (18010): Register Top_level:TicTacToe|glitch_filter:Fil1|count[0] will power up to Low File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/glitch_filter.vhd Line: 25
+    Critical Warning (18010): Register Top_level:TicTacToe|glitch_filter:Fil3|count[31] will power up to Low File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/glitch_filter.vhd Line: 25
+    Critical Warning (18010): Register Top_level:TicTacToe|glitch_filter:Fil3|count[0] will power up to Low File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/glitch_filter.vhd Line: 25
+    Critical Warning (18010): Register Top_level:TicTacToe|glitch_filter:Fil4|count[31] will power up to Low File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/glitch_filter.vhd Line: 25
+    Critical Warning (18010): Register Top_level:TicTacToe|glitch_filter:Fil4|count[0] will power up to Low File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/glitch_filter.vhd Line: 25
+    Critical Warning (18010): Register Top_level:TicTacToe|glitch_filter:Fil9|count[31] will power up to Low File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/glitch_filter.vhd Line: 25
+    Critical Warning (18010): Register Top_level:TicTacToe|glitch_filter:Fil9|count[0] will power up to Low File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/glitch_filter.vhd Line: 25
+Info (17049): 1 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 21 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "ADC_DOUT" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 13
+    Warning (15610): No output dependent on input pin "AUD_ADCDAT" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 17
+    Warning (15610): No output dependent on input pin "CLOCK2_50" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 26
+    Warning (15610): No output dependent on input pin "CLOCK3_50" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 27
+    Warning (15610): No output dependent on input pin "CLOCK4_50" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 28
+    Warning (15610): No output dependent on input pin "IRDA_RXD" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 56
+    Warning (15610): No output dependent on input pin "KEY[0]" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 60
+    Warning (15610): No output dependent on input pin "KEY[1]" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 60
+    Warning (15610): No output dependent on input pin "KEY[2]" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 60
+    Warning (15610): No output dependent on input pin "KEY[3]" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 60
+    Warning (15610): No output dependent on input pin "TD_CLK27" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 75
+    Warning (15610): No output dependent on input pin "TD_DATA[0]" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 76
+    Warning (15610): No output dependent on input pin "TD_DATA[1]" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 76
+    Warning (15610): No output dependent on input pin "TD_DATA[2]" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 76
+    Warning (15610): No output dependent on input pin "TD_DATA[3]" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 76
+    Warning (15610): No output dependent on input pin "TD_DATA[4]" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 76
+    Warning (15610): No output dependent on input pin "TD_DATA[5]" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 76
+    Warning (15610): No output dependent on input pin "TD_DATA[6]" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 76
+    Warning (15610): No output dependent on input pin "TD_DATA[7]" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 76
+    Warning (15610): No output dependent on input pin "TD_HS" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 77
+    Warning (15610): No output dependent on input pin "TD_VS" File: C:/Users/m252340/Desktop/Quartus/Projects/DE1_SoC_rtl/DE1_SoC_rtl/de1_soc_top.vhd Line: 79
+Info (21057): Implemented 836 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 32 input pins
+    Info (21059): Implemented 111 output pins
+    Info (21060): Implemented 97 bidirectional pins
+    Info (21061): Implemented 596 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 287 warnings
+    Info: Peak virtual memory: 4922 megabytes
+    Info: Processing ended: Thu Dec 08 13:28:35 2022
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:41
+
+
